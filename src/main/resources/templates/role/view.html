@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments-admin :: navigation"></nav>
+
+<ul>
+    <li th:each="right : ${role.rightRoles}" th:text="${right.name}"></li>
+</ul>
+
+<a th:href="'/role/add-right/' + ${role.id}">Add Right</a>
+<a th:href="'/role/remove-right/' + ${role.id}">Remove Right</a>
+
+</body>
+</html>

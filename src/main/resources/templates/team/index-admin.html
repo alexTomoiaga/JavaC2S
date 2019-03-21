@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments-admin :: navigation"></nav>
+
+<p th:unless="${teams} and ${teams.size()}">no teams :(</p>
+
+<table class="table">
+
+    <tr>
+        <th>Edit</th>
+        <th>Name</th>
+    </tr>
+
+    <tr th:each="team : ${teams}">
+        <td><a th:href="'team/edit/' + ${team.id}" th:text="Edit"></a></td>
+        <td><a th:href="'team/view/' + ${team.id}" th:text="${team.name}"></a></td>
+
+    </tr>
+
+</table>
+
+<a th:href="@{team/add}">Add Team | </a>
+<a th:href="@{team/remove}">Remove Team</a>
+
+</body>
+</html>

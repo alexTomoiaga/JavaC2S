@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments-admin :: navigation"></nav>
+
+<ul>
+    <li th:each="player : ${team.players}" th:text="${player.name}"></li>
+</ul>
+
+<a th:href="'/team/add-player/' + ${team.id}">Add player</a>
+<a th:href="'/team/remove-player/' + ${team.id}">Remove player</a>
+
+</body>
+</html>

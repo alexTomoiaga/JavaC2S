@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments-admin :: navigation"></nav>
+
+<form method="post">
+
+    <div th:each="role : ${roles}" class="checkbox">
+        <input type="checkbox" name="roleIds" th:value="${role.id}" th:id="${role.id}"/>
+        <label th:for="${role.id}" th:text="${role.name}"></label>
+        <br />
+    </div>
+
+    <input type="submit" value="Remove Role" />
+</form>
+
+</body>
+</html>

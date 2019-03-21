@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments-admin :: navigation"></nav>
+
+
+<p th:unless="${roles} and ${roles.size()}">no roles :(</p>
+
+
+<table class="table">
+
+    <tr>
+        <th>Edit</th>
+        <th>Name</th>
+
+    </tr>
+
+    <tr th:each="role : ${roles}">
+        <td><a th:href="'role/edit/' + ${role.id}" th:text="Edit"></a></td>
+        <td><a th:href="'role/view/' + ${role.id}" th:text="${role.name}"></a></td>
+    </tr>
+
+</table>
+
+<a th:href="@{role/add}">Add</a> |
+<a th:href="@{role/remove}">Remove</a>
+
+</body>
+</html>

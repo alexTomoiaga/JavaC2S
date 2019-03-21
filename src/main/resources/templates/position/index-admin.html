@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments-admin :: navigation"></nav>
+
+<table class="table">
+
+    <tr>
+        <th>Edit</th>
+        <th>Position</th>
+    </tr>
+
+    <tr th:each="position : ${positions}">
+        <td><a th:href="'position/edit/' + ${position.id}" th:text="Edit"></a></td>
+        <td><a th:href="'/player/position?id=' + ${position.id}" th:text="${position.name}"></a></td>
+    </tr>
+
+</table>
+
+<a href="/position/add">Add position |</a>
+<a href="/position/remove"> Remove position</a>
+</body>
+</html>

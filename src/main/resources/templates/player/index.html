@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<p th:unless="${players} and ${players.size()}">no player :(</p>
+
+
+<table class="table">
+
+    <tr>
+        <th>Edit</th>
+        <th>Name</th>
+        <th>Age in league</th>
+        <th>Size</th>
+        <th>Number</th>
+        <th>Position</th>
+    </tr>
+
+    <tr th:each="player : ${players}">
+        <td><a th:href="'player/edit/' + ${player.id}" th:text="Edit"></a></td>
+        <td th:text="${player.name}"></td>
+        <td th:text="${player.ageInLeague}"></td>
+        <td th:text="${player.size}"></td>
+        <td th:text="${player.number}"></td>
+        <td th:text="${player.position.getName()}"></td>
+    </tr>
+
+</table>
+
+<a th:href="@{player/add}">Add</a> |
+<a th:href="@{player/remove}">Remove</a>
+
+</body>
+</html>
